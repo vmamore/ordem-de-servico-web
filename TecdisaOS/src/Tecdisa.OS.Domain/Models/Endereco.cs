@@ -11,7 +11,7 @@ namespace Tecdisa.OS.Domain.Models
         public string Cidade { get; set; }
         public string UF { get; set; }
 
-        public ICollection<Cliente> Clientes { get; set; }
+        public virtual ICollection<Cliente> Clientes { get; set; }
 
         public override bool EhValido()
         {

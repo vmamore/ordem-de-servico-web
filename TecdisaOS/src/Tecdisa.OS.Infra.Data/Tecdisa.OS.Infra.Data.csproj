@@ -47,13 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\EnderecoConfig.cs" />
     <Compile Include="Context\TecdisaContext.cs" />
+    <Compile Include="Configuration\ClienteConfig.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityConfiguration\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Tecdisa.OS.Domain\Tecdisa.OS.Domain.csproj">
       <Project>{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}</Project>
