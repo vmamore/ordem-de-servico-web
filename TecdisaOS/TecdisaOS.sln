@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{51F9231D-0048-4E49-9C64-3328E6339DB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Service", "2 - Service", "{34CFA768-0187-4FC7-820E-180B8D8EC417}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{9E3BBD39-F84C-4FE8-A6CF-62F4C23BD908}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{9947B844-E814-4BC0-9438-538FC97D8FF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{E8F5AD6F-E52C-4BF5-915D-9363055379A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{A14659E9-1776-4B97-8027-799D80839567}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{ADF798FB-7A3C-4A1E-BDDA-CAC3AD01F347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecdisa.OS.Domain", "src\Tecdisa.OS.Domain\Tecdisa.OS.Domain.csproj", "{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tecdisa.OS.Infra.Data", "src\Tecdisa.OS.Infra.Data\Tecdisa.OS.Infra.Data.csproj", "{7C272EAF-6589-4000-98D3-7C5A2AA6ABA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C272EAF-6589-4000-98D3-7C5A2AA6ABA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C272EAF-6589-4000-98D3-7C5A2AA6ABA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C272EAF-6589-4000-98D3-7C5A2AA6ABA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C272EAF-6589-4000-98D3-7C5A2AA6ABA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A14659E9-1776-4B97-8027-799D80839567} = {E8F5AD6F-E52C-4BF5-915D-9363055379A3}
+		{ADF798FB-7A3C-4A1E-BDDA-CAC3AD01F347} = {E8F5AD6F-E52C-4BF5-915D-9363055379A3}
+		{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8} = {9947B844-E814-4BC0-9438-538FC97D8FF2}
+		{7C272EAF-6589-4000-98D3-7C5A2AA6ABA2} = {A14659E9-1776-4B97-8027-799D80839567}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79468CC2-2A02-44AB-B9B9-9CB0C2D54265}
+	EndGlobalSection
+EndGlobal
