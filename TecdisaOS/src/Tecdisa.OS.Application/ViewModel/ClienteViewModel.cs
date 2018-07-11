@@ -84,5 +84,17 @@ namespace Tecdisa.OS.Application.ViewModel
         [Display(Name = "E-mail Contador")]
         [DataType(DataType.EmailAddress)]
         public string EmailContador { get; set; }
+        
+        [ScaffoldColumn(false)]
+        public bool Ativo { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool Excluido { get; set; }
+
+        [ScaffoldColumn(false)]
+        public DateTime DataCadastro { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<EnderecoViewModel> Enderecos { get; set; }
     }
 }

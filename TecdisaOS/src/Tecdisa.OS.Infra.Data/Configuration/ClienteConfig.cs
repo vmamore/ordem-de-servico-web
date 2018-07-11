@@ -44,31 +44,7 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
             Property(c => c.UsuarioComercial.Email)
                 .HasMaxLength(200)
                 .IsRequired();
-
-            Property(c => c.UsuarioExpedicao.Nome)
-                .HasMaxLength(100)
-                .IsRequired();
-
-            Property(c => c.UsuarioExpedicao.Email)
-                .HasMaxLength(200)
-                .IsRequired();
-
-            Property(c => c.UsuarioFaturista.Nome)
-                .HasMaxLength(100)
-                .IsRequired();
-
-            Property(c => c.UsuarioFaturista.Email)
-                .HasMaxLength(200)
-                .IsRequired();
             
-            Property(c => c.UsuarioTI.Nome)
-                .HasMaxLength(100)
-                .IsRequired();
-
-            Property(c => c.UsuarioTI.Email)
-                .HasMaxLength(200)
-                .IsRequired();
-
             Property(c => c.UsuarioFinanceiro.Nome)
                 .HasMaxLength(100)
                 .IsRequired();
@@ -77,10 +53,21 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
                 .HasMaxLength(200)
                 .IsRequired();
 
-            HasRequired(c => c.Endereco)
-                .WithMany(e => e.Clientes)
-                .HasForeignKey(c => c.EnderecoId);
+            Property(c => c.UsuarioContabil.Nome)
+                .HasMaxLength(100);
 
+            Property(c => c.UsuarioContabil.Email)
+                .HasMaxLength(200);
+
+            Property(c => c.UsuarioExpedicao.Nome)
+                .HasMaxLength(100);
+
+            Property(c => c.UsuarioFaturista.Nome)
+                .HasMaxLength(100);
+
+            Property(c => c.UsuarioTI.Nome)
+                .HasMaxLength(100);
+            
             ToTable("Clientes");
         }
     }

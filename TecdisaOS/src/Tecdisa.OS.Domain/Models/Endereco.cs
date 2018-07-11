@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace Tecdisa.OS.Domain.Models
 {
@@ -11,7 +11,8 @@ namespace Tecdisa.OS.Domain.Models
         public string Cidade { get; set; }
         public string UF { get; set; }
 
-        public virtual ICollection<Cliente> Clientes { get; set; }
+        public Guid ClienteId { get; set; }
+        public virtual Cliente Cliente { get; set; }
 
         public override bool EhValido()
         {

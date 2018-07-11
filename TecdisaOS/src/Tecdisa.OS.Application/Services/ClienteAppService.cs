@@ -10,6 +10,7 @@ using Tecdisa.OS.Infra.Data.Repository;
 
 namespace Tecdisa.OS.Application.Services
 {
+    // TODO missing implementation
     public class ClienteAppService : IClienteAppService
     {
         private readonly IClienteRepository _clienteRepository;

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Tecdisa.OS.Application.ViewModel
 {
@@ -29,5 +30,8 @@ namespace Tecdisa.OS.Application.ViewModel
         [MaxLength(2, ErrorMessage = "Máximo de 2 caracteres")]
         [Display(Name = "Estado")]
         public string UF { get; set; }
+
+        [ScaffoldColumn(false)]
+        public Guid ClienteId { get; set; }
     }
 }

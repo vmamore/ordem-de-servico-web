@@ -35,6 +35,10 @@ namespace Tecdisa.OS.Infra.Data.Configuration
                 .IsFixedLength()
                 .IsRequired();
 
+            HasRequired(e => e.Cliente)
+                .WithMany(c => c.Enderecos)
+                .HasForeignKey(e => e.ClienteId);
+
             ToTable("Enderecos");
         }
     }

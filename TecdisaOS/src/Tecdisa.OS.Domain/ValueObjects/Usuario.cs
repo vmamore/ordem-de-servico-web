@@ -6,13 +6,13 @@
         Expedicao,
         Financeiro,
         Faturista,
-        TI
+        TI,
+        Contabil
     }
 
     public abstract class Usuario
     {
         public string Nome { get; set; }
-        public string Email { get; set; }
         public CARGO Cargo { get; set; }
     }
 }
