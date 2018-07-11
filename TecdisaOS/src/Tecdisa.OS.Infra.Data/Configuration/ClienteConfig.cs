@@ -5,6 +5,7 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
 {
     public class ClienteConfig : EntityTypeConfiguration<Cliente>
     {
+        // TODO verificar as propriedades e relacionamento
         public ClienteConfig()
         {
             HasKey(c => c.Id);
@@ -31,11 +32,9 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
                 .IsRequired();
 
             Property(c => c.Atividade)
-                .HasMaxLength(4)
                 .IsRequired();
 
-            Property(c => c.Atividade)
-                .HasMaxLength(2)
+            Property(c => c.Tabela)
                 .IsRequired();
 
             Property(c => c.UsuarioComercial.Nome)

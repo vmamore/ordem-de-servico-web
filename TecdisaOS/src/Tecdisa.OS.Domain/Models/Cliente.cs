@@ -3,13 +3,6 @@ using Tecdisa.OS.Domain.ValueObjects;
 
 namespace Tecdisa.OS.Domain.Models
 {
-    public enum Tabela
-    {
-        Basico,
-        Intermediario,
-        Avançado
-    };
-
     public class Cliente : Entity
     {
         public string Nome { get; set; }
@@ -18,8 +11,8 @@ namespace Tecdisa.OS.Domain.Models
         public string InscricaoEstadual { get; set; }
         public string Telefone { get; set; }
 
-        public string Atividade { get; set; }
-        public Tabela Tabela { get; set; }
+        public int Atividade { get; set; }
+        public int Tabela { get; set; }
 
         public TI UsuarioTI{ get; set; }
         public Expedicao UsuarioExpedicao { get; set; }
