@@ -1,5 +1,8 @@
-<<<<<<< HEAD
-# os-tecdisa
-=======
-# ordem-de-servico-web
->>>>>>> 4bd3724a7a61208b699e8d37fd0a0879d588ae70
+# os-tecdisa 
+Aplicação feita em Aspnetmvc 5 para lançamentos de atendimentos feitos pelo suporte com principal foco na aprendizagem das ferramentas: 
+
+. Automapper 
+. Simple Injector
+. Entity Framework 6 
+. Dapper 
+. AspNet Identity
