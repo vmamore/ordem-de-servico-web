@@ -1,5 +1,5 @@
 # Ordem de Serviço
-### Aplicação feita em Aspnetmvc 5 para lançamento de atendimentos com principal foco na aprendizagem das ferramentas: 
+### Aplicação feita em ASP. NET MVC 5 para lançamento de atendimentos com principal foco na aprendizagem das ferramentas: 
 
 - Automapper 
 > Mapeamento das Entidades em ViewModels e vice-versa
