@@ -18,19 +18,19 @@ namespace Tecdisa.OS.Domain.Models
         public string Telefone { get; set; }
 
         public bool Ativo { get; private set; }
-        public bool Excluido { get; set; }
+        public bool Excluido { get; private set; }
 
         public int Atividade { get; set; }
         public int Tabela { get; set; }
 
         public DateTime DataCadastro { get; set; }
 
-        public TI UsuarioTI{ get; set; }
-        public Expedicao UsuarioExpedicao { get; set; }
-        public Faturista UsuarioFaturista { get; set; }
-        public Financeiro UsuarioFinanceiro { get; set; }
-        public Comercial UsuarioComercial { get; set; }
-        public Contabil UsuarioContabil { get; set; }
+        public virtual TI UsuarioTI{ get; set; }
+        public virtual Expedicao UsuarioExpedicao { get; set; }
+        public virtual Faturista UsuarioFaturamento { get; set; }
+        public virtual Financeiro UsuarioFinanceiro { get; set; }
+        public virtual Comercial UsuarioComercial { get; set; }
+        public virtual Contabil UsuarioContabil { get; set; }
 
         public virtual ICollection<Endereco> Enderecos { get; protected set; }
 

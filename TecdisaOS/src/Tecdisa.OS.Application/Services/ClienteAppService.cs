@@ -1,23 +1,55 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Tecdisa.OS.Application.Interfaces;
 using Tecdisa.OS.Application.ViewModel;
 using Tecdisa.OS.Domain.Interfaces;
 using Tecdisa.OS.Domain.Models;
 using Tecdisa.OS.Infra.Data.Repository;
-
+using Tecdisa.OS.Infra.Data.UoW;
 
 namespace Tecdisa.OS.Application.Services
 {
-    // TODO missing implementation
-    public class ClienteAppService : IClienteAppService
+    public class ClienteAppService : AppService, IClienteAppService
     {
         private readonly IClienteRepository _clienteRepository;
+        private readonly IEnderecoRepository _enderecoRepository;
 
-        public ClienteAppService()
+        public ClienteAppService(IClienteRepository clienteRepository, IEnderecoRepository enderecoRepository, IUnitOfWork uow) : base(uow)
         {
-            _clienteRepository = new ClienteRepository();
+            _clienteRepository = clienteRepository;
+            _enderecoRepository = enderecoRepository;
+        }
+
+        public PagedViewModel<ClienteViewModel> ObterTodosPaginado(string nome, int s, int t)
+        {
+            return Mapper.Map<PagedViewModel<ClienteViewModel>>(_clienteRepository.ObterTodosPaginado(nome, s, t));
+        }
+
+        public IEnumerable<ClienteViewModel> ObterTodos()
+        {
+            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterTodos());
+        }
+
+        public IEnumerable<ClienteViewModel> ObterAtivos()
+        {
+            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterAtivos());
+        }
+
+        public IEnumerable<ClienteViewModel> ObterPorNome(string nome)
+        {
+            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterPorNome(nome));
+        }
+
+        public ClienteViewModel[] ObterTodosToArray()
+        {
+            return Mapper.Map<ClienteViewModel[]>(_clienteRepository.ObterTodos().ToArray());
+        }
+
+        public ClienteViewModel ObterPorIdSemEndereco(Guid id)
+        {
+            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorIdSemEndereco(id));
         }
 
         public ClienteEnderecoViewModel Adicionar(ClienteEnderecoViewModel clienteEnderecoViewModel)
@@ -25,39 +57,60 @@ namespace Tecdisa.OS.Application.Services
             var cliente = Mapper.Map<Cliente>(clienteEnderecoViewModel.Cliente);
             var endereco = Mapper.Map<Endereco>(clienteEnderecoViewModel.Endereco);
 
+            cliente.AdicionarEndereco(endereco);
+
+            cliente.Ativar();
+
             _clienteRepository.Adicionar(cliente);
+            
+            _uow.Commit();
 
             return clienteEnderecoViewModel;
         }
 
         public ClienteEnderecoViewModel Atualizar(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
-            throw new NotImplementedException();
-        }
+            var cliente = Mapper.Map<Cliente>(clienteEnderecoViewModel.Cliente);
+            var endereco = Mapper.Map<Endereco>(clienteEnderecoViewModel.Endereco);
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+            cliente.AdicionarEndereco(endereco);
 
-        public IEnumerable<ClienteViewModel> ObterAtivos()
-        {
-            throw new NotImplementedException();
+            // IMPROVE LATER
+            _clienteRepository.Atualizar(cliente);
+            _enderecoRepository.Atualizar(endereco);
+
+            _uow.Commit();
+
+            return clienteEnderecoViewModel;
         }
 
         public ClienteEnderecoViewModel ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            var cliente = Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorId(id));
+
+            var clienteEnderecoViewModel = new ClienteEnderecoViewModel();
+
+            clienteEnderecoViewModel.Cliente = Mapper.Map<ClienteViewModel>(cliente);
+            clienteEnderecoViewModel.Endereco = Mapper.Map<EnderecoViewModel>(cliente.Enderecos.FirstOrDefault());
+
+            return clienteEnderecoViewModel;
         }
 
-        public IEnumerable<ClienteViewModel> ObterTodos()
+        public string ObterUsuario(Guid clienteId)
         {
-            throw new NotImplementedException();
+            return _clienteRepository.ObterUsuario(clienteId);
         }
 
         public void Remover(Guid id)
         {
-            throw new NotImplementedException();
+            _clienteRepository.Remover(id);
+            Commit();
+        }
+
+        public void Dispose()
+        {
+            _clienteRepository.Dispose();
+            _enderecoRepository.Dispose();
         }
     }
 }

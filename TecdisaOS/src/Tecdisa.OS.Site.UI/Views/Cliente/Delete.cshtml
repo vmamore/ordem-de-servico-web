@@ -1,0 +1,66 @@
+﻿@model Tecdisa.OS.Application.ViewModel.ClienteEnderecoViewModel
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<div class="d-flex justify-content-between align-items-end mb-2">
+    <h4 class="display-4"> Você tem certeza que deseja deletar?</h4>
+
+    <p class="label text-danger"><span class="fa fa-arrow-circle-o-right"></span> Cliente</p>
+</div>
+<div>
+    <hr />
+    <div class="form-row">
+        <div class="form-group col">
+            @Html.LabelFor(model => model.Cliente.Nome, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Cliente.Nome, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+
+        <div class="form-group col">
+            @Html.LabelFor(model => model.Cliente.Fantasia, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Cliente.Fantasia, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col">
+            @Html.LabelFor(model => model.Cliente.CNPJ, htmlAttributes: new { @class = "control-label " })
+            @Html.EditorFor(model => model.Cliente.CNPJ, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+
+        <div class="form-group col">
+            @Html.LabelFor(model => model.Cliente.InscricaoEstadual, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Cliente.InscricaoEstadual, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+
+        <div class="form-group col">
+            @Html.LabelFor(model => model.Cliente.Telefone, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Cliente.Telefone, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-3">
+            @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+
+        <div class="form-group col-3">
+            @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {@Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.Cliente.Id)
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Deletar" class="btn btn-outline-danger" />
+        <a href="@Url.Action("Index", "Cliente")" class="btn btn-outline-warning"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
+    </div>
+}
+</div>

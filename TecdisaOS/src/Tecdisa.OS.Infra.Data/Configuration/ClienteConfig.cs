@@ -5,7 +5,6 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
 {
     public class ClienteConfig : EntityTypeConfiguration<Cliente>
     {
-        // TODO verificar as propriedades e relacionamento
         public ClienteConfig()
         {
             HasKey(c => c.Id);
@@ -31,6 +30,12 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
                 .HasMaxLength(14)
                 .IsRequired();
 
+            Property(c => c.Ativo)
+                .IsRequired();
+
+            Property(c => c.Excluido)
+                .IsRequired();
+
             Property(c => c.Atividade)
                 .IsRequired();
 
@@ -38,34 +43,43 @@ namespace Tecdisa.OS.Infra.Data.EntityConfiguration
                 .IsRequired();
 
             Property(c => c.UsuarioComercial.Nome)
+                .HasColumnName("UsuarioComercialNome")
                 .HasMaxLength(100)
                 .IsRequired();
 
             Property(c => c.UsuarioComercial.Email)
+                .HasColumnName("UsuarioComercialEmail")
                 .HasMaxLength(200)
                 .IsRequired();
             
             Property(c => c.UsuarioFinanceiro.Nome)
+                .HasColumnName("UsuarioFinanceiroNome")
                 .HasMaxLength(100)
                 .IsRequired();
 
             Property(c => c.UsuarioFinanceiro.Email)
+                .HasColumnName("UsuarioFinanceiroEmail")
                 .HasMaxLength(200)
                 .IsRequired();
 
             Property(c => c.UsuarioContabil.Nome)
+                .HasColumnName("UsuarioContabilNome")
                 .HasMaxLength(100);
 
             Property(c => c.UsuarioContabil.Email)
+                .HasColumnName("UsuarioContabilEmail")
                 .HasMaxLength(200);
 
             Property(c => c.UsuarioExpedicao.Nome)
+                .HasColumnName("UsuarioExpedicaoNome")
                 .HasMaxLength(100);
 
-            Property(c => c.UsuarioFaturista.Nome)
+            Property(c => c.UsuarioFaturamento.Nome)
+                .HasColumnName("UsuarioFaturamentoNome")
                 .HasMaxLength(100);
 
             Property(c => c.UsuarioTI.Nome)
+                .HasColumnName("UsuarioTINome")
                 .HasMaxLength(100);
             
             ToTable("Clientes");

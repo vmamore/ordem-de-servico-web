@@ -1,0 +1,27 @@
+﻿@model Tecdisa.OS.Application.ViewModel.SistemaViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2 class="display-4">Detalhes</h2>
+
+<div class="form-row">
+    <div class="form-group col-3">
+        <div class="d-inline-flex">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label mr-5 pr-5"})
+            <div class="form-row">
+                <div class="form-check d-flex align-self-md-center ml-5 pl-5">
+                    @Html.LabelFor(model => model.Ativo, htmlAttributes: new { @class = "form-check-label" })
+                    @Html.EditorFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-check-input disabled", @type = "checkbox", @disabled = "true" } })
+                </div>
+            </div>
+        </div>
+        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+    </div>
+</div>
+
+<p>
+    <a href="@Url.Action("Edit","Sistemas", new { id = Model.Id})" class="btn btn-outline-success"><i class="fa fa-edit"></i> Editar</a>
+    <a href="@Url.Action("Index", "Sistemas")" class="btn btn-outline-warning"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
+</p>

@@ -13,6 +13,7 @@ namespace Tecdisa.OS.Application.ViewModel
         public ClienteViewModel()
         {
             Id = Guid.NewGuid();
+            Enderecos = new List<EnderecoViewModel>();
         }
         
         [Key]
@@ -48,43 +49,53 @@ namespace Tecdisa.OS.Application.ViewModel
         public int Atividade { get; set; }
 
         [Required]
-        [MaxLength(100, ErrorMessage = "Campo Usuário Faturamento obrigatório")]
-        [Display(Name = "Usuário Faturamento")]
-        public string UsuarioFaturamento { get; set; }
-        
-        [Required]
         [MaxLength(100, ErrorMessage = "Campo Usuário Financeiro obrigatório")]
         [Display(Name = "Usuário Financeiro")]
-        public string UsuarioFinanceiro { get; set; }
-
-        [Required]
-        [MaxLength(100, ErrorMessage = "Campo Usuário Expedição obrigatório")]
-        [Display(Name = "Usuário Expedição")]
-        public string UsuarioExpedicao { get; set; }
-
-        [Required]
-        [MaxLength(100, ErrorMessage = "Campo Usuário TI obrigatório")]
-        [Display(Name = "Usuário TI")]
-        public string UsuarioTI { get; set; }
-
-        [Required]
-        [MaxLength(200, ErrorMessage = "Campo E-mail Faturamento obrigatório")]
-        [Display(Name = "E-mail Faturamento")]
-        [DataType(DataType.EmailAddress)]
-        public string EmailFaturamento { get; set; }
+        public string UsuarioFinanceiroNome { get; set; }
 
         [Required]
         [MaxLength(200, ErrorMessage = "Campo E-mail Financeiro obrigatório")]
         [Display(Name = "E-mail Financeiro")]
         [DataType(DataType.EmailAddress)]
-        public string EmailFinanceiro { get; set; }
+        public string UsuarioFinanceiroEmail { get; set; }
 
         [Required]
-        [MaxLength(200, ErrorMessage = "Campo E-mail Contador obrigatório")]
-        [Display(Name = "E-mail Contador")]
+        [MaxLength(100, ErrorMessage = "Campo Usuário Comercial obrigatório")]
+        [Display(Name = "Usuário Comercial")]
+        public string UsuarioComercialNome { get; set; }
+
+        [Required]
+        [MaxLength(200, ErrorMessage = "Campo E-mail Comercial obrigatório")]
+        [Display(Name = "E-mail Comercial")]
         [DataType(DataType.EmailAddress)]
-        public string EmailContador { get; set; }
+        public string UsuarioComercialEmail { get; set; }
+
+        [MaxLength(100, ErrorMessage = "Campo Usuário Faturamento obrigatório")]
+        [Display(Name = "Usuário Faturamento")]
+        public string UsuarioFaturamentoNome { get; set; }
         
+        [MaxLength(200, ErrorMessage = "Campo E-mail Faturamento obrigatório")]
+        [Display(Name = "E-mail Faturamento")]
+        [DataType(DataType.EmailAddress)]
+        public string UsuarioFaturamentoEmail { get; set; }
+
+        [MaxLength(100, ErrorMessage = "Campo Usuário Contador obrigatório")]
+        [Display(Name = "Usuário Contador")]
+        public string UsuarioContabilNome { get; set; }
+
+        [MaxLength(200, ErrorMessage = "Campo E-mail Contabil obrigatório")]
+        [Display(Name = "E-mail Contabil")]
+        [DataType(DataType.EmailAddress)]
+        public string UsuarioContabilEmail { get; set; }
+
+        [MaxLength(100, ErrorMessage = "Campo Usuário Expedição obrigatório")]
+        [Display(Name = "Usuário Expedição")]
+        public string UsuarioExpedicaoNome { get; set; }
+        
+        [MaxLength(100, ErrorMessage = "Campo Usuário TI obrigatório")]
+        [Display(Name = "Usuário TI")]
+        public string UsuarioTINome { get; set; }
+
         [ScaffoldColumn(false)]
         public bool Ativo { get; set; }
 

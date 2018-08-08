@@ -5,7 +5,6 @@ namespace Tecdisa.OS.Infra.Data.Configuration
 {
     public class EnderecoConfig : EntityTypeConfiguration<Endereco>
     {
-        //TODO verificar propriedades e relacionamento
         public EnderecoConfig()
         {
             HasKey(e => e.Id);

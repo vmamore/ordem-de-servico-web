@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98D66C4B-1A68-42D9-B193-240B83142B4B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tecdisa.OS.Infra.CrossCutting.IoD</RootNamespace>
+    <AssemblyName>Tecdisa.OS.Infra.CrossCutting.IoD</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SimpleInjector, Version=4.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.4.3.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleBootStrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tecdisa.OS.Application\Tecdisa.OS.Application.csproj">
+      <Project>{0d959ca4-19b4-4f2e-88c5-0a99cea15413}</Project>
+      <Name>Tecdisa.OS.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tecdisa.OS.Domain\Tecdisa.OS.Domain.csproj">
+      <Project>{8B0D5F30-AFE3-43C8-9B2A-EBBA67B2FBF8}</Project>
+      <Name>Tecdisa.OS.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tecdisa.OS.Infra.CrossCutting.Loggin\Tecdisa.OS.Infra.CrossCutting.Loggin.csproj">
+      <Project>{46F3B40E-A011-481A-8B72-D7A7A86166BC}</Project>
+      <Name>Tecdisa.OS.Infra.CrossCutting.Loggin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tecdisa.OS.Infra.Data\Tecdisa.OS.Infra.Data.csproj">
+      <Project>{7c272eaf-6589-4000-98d3-7c5a2aa6aba2}</Project>
+      <Name>Tecdisa.OS.Infra.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

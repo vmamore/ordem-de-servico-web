@@ -1,0 +1,130 @@
+﻿@model Tecdisa.OS.Application.ViewModel.OrdemDeServicoViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    .border-right {
+        border-right: 1px solid black;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4 class="display-4">Editar</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ClienteNome, new { @id = "clienteNome" })
+    @Html.HiddenFor(model => model.TecnicoId)
+
+
+    <div class="form-row justify-content-end">
+        <div class="form-group col-2 mt-3 pt-1">
+            @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+            @Html.ValidationMessageFor(model => model.DataCadastro, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-2 mt-3 pt-1">
+            @Html.LabelFor(model => model.HoraCadastro, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            @Html.EditorFor(model => model.HoraCadastro, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+            @Html.ValidationMessageFor(model => model.HoraCadastro, "", new { @class = "text-danger" })
+        </div>
+
+        <span class="border-right mx-1"></span>
+
+        <div class="form-row">
+
+            <div class="form-group col">
+                <p class="m-0 small label text-muted text-right"><span class="badge badge-dark">Shift + D</span> para preenchimento automático</p>
+
+                <div class="d-inline-block m-0">
+                    @Html.LabelFor(model => model.DataDeFechamento, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                    @Html.EditorFor(model => model.DataDeFechamento, new { htmlAttributes = new { @class = "form-control", @id = "dataDeFechamento" } })
+                    @Html.ValidationMessageFor(model => model.DataDeFechamento, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-inline-block m-0">
+                    @Html.LabelFor(model => model.HoraDeFechamento, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                    @Html.EditorFor(model => model.HoraDeFechamento, new { htmlAttributes = new { @class = "form-control", @id = "horaDeFechamento" } })
+                    @Html.ValidationMessageFor(model => model.HoraDeFechamento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-5">
+            @Html.LabelFor(model => model.ClienteId, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            @Html.DropDownListFor(model => model.ClienteId, new SelectList(ViewBag.ListaDeClientes, "Value", "Text", ViewBag.ClienteId) , new { @class = "form-control", @id = "listaDeClientes" })
+            @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col">
+            <div class="form-row justify-content-end">
+                <div class="form-group col-4">
+                    @Html.LabelFor(model => model.NomeDoFaturista, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                    @Html.EditorFor(model => model.NomeDoFaturista, new { htmlAttributes = new { @class = "form-control", @id = "nomeDoFaturista" } })
+                    @Html.ValidationMessageFor(model => model.NomeDoFaturista, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-2">
+            @Html.LabelFor(model => model.Sistema, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            @Html.DropDownListFor(model => model.Sistema, (IEnumerable<SelectListItem>) ViewBag.Sistemas, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Sistema, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-3">
+            @Html.LabelFor(model => model.Modulo, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            @Html.DropDownListFor(model => model.Modulo, (IEnumerable<SelectListItem>) ViewBag.Modulos, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Modulo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-row">
+        <div class="form-group col text-center">
+            @Html.LabelFor(model => model.Problema, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            @Html.TextAreaFor(model => model.Problema, new { @class = "form-control", @cols = "10", @rows = "4" })
+            @Html.ValidationMessageFor(model => model.Problema, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col text-center">
+            @Html.LabelFor(model => model.Solucao, htmlAttributes: new { @class = "control-label" })
+            @Html.TextAreaFor(model => model.Solucao, new { @class = "form-control", @cols = "10", @rows = "4" })
+            @Html.ValidationMessageFor(model => model.Solucao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label" })
+            @Html.TextAreaFor(model => model.Observacao, new { @class = "form-control", @cols = "10", @rows = "4" })
+            @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-check col-2 align-self-center pl-4 m-0">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.NecessitaDeAjuste, new { htmlAttributes = new { @class = "form-check-input" } })
+                @Html.ValidationMessageFor(model => model.NecessitaDeAjuste, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.NecessitaDeAjuste, htmlAttributes: new { @class = "form-check-label" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-outline-success"><i class="fa fa-arrow-up"></i> Salvar Atendimento</button>
+        <a href="@Url.Action("Index", "OrdemDeServico")" class="btn btn-outline-warning"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

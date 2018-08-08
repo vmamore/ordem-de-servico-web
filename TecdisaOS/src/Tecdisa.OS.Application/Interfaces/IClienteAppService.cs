@@ -12,9 +12,19 @@ namespace Tecdisa.OS.Application.Interfaces
 
         IEnumerable<ClienteViewModel> ObterTodos();
 
+        ClienteViewModel[] ObterTodosToArray();
+        
         IEnumerable<ClienteViewModel> ObterAtivos();
 
+        IEnumerable<ClienteViewModel> ObterPorNome(string nome);
+
+        PagedViewModel<ClienteViewModel> ObterTodosPaginado(string nome, int s, int t);
+        
         ClienteEnderecoViewModel ObterPorId(Guid id);
+
+        ClienteViewModel ObterPorIdSemEndereco(Guid id);
+        
+        string ObterUsuario(Guid clienteId);
 
         void Remover(Guid id);
     }

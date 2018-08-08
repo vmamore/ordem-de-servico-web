@@ -4,7 +4,7 @@ namespace Tecdisa.OS.Application.AutoMapper
 {
     public class AutoMapperConfig
     {
-        public static void RegistarMappings()
+        public static void RegisterMappings()
         {
             Mapper.Initialize(i =>
             {

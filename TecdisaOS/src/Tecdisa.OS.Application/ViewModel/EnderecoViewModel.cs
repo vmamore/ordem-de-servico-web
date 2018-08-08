@@ -5,6 +5,14 @@ namespace Tecdisa.OS.Application.ViewModel
 {
     public class EnderecoViewModel
     {
+        public EnderecoViewModel()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        [Key]
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "Campo Logradouro obrigatório")]
         [MaxLength(200, ErrorMessage = "Máximo de 200 caracteres")]
         public string Logradouro { get; set; }

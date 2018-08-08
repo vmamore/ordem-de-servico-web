@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Tecdisa.OS.Application.ViewModel.ModuloViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="d-flex justify-content-between align-items-end mb-2">
+    <h1 class="display-4">Modulos</h1>
+
+    <a href="@Url.Action("Create", "Modulo")" role="button" class="btn btn-outline-secondary"><i class="fa fa-plus-square"></i> Novo Módulo</a>
+</div>
+
+<table class="table table-striped table-sm text-center">
+    <tr>
+        <th colspan="2"></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sistema.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td colspan="2"></td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sistema.Nome)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Modulo", new { id=item.Id })" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+            <a href="@Url.Action("Details", "Modulo", new { id=item.Id })" class="btn btn-outline-info"><i class="fa fa-list"></i></a>
+            <a href="@Url.Action("Delete", "Modulo", new { id=item.Id })" class="btn btn-outline-danger"><i class="fa fa-remove"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

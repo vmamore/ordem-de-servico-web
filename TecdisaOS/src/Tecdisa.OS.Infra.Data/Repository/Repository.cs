@@ -14,9 +14,9 @@ namespace Tecdisa.OS.Infra.Data.Repository
         protected TecdisaContext Db;
         protected DbSet<TEntity> DbSet;
 
-        public Repository()
+        public Repository(TecdisaContext db)
         {
-            Db = new TecdisaContext();
+            Db = db;
             DbSet = Db.Set<TEntity>();
         }
 
@@ -30,7 +30,7 @@ namespace Tecdisa.OS.Infra.Data.Repository
             return DbSet.ToList();
         }
 
-        public TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(Guid id)
         {
             return DbSet.Find(id);
         }
@@ -44,12 +44,12 @@ namespace Tecdisa.OS.Infra.Data.Repository
         public TEntity Atualizar(TEntity obj)
         {
             var entry = Db.Entry(obj);
-            DbSet.Add(obj);
+            DbSet.Attach(obj);
             entry.State = EntityState.Modified;
             return obj;
         }
 
-        public void Remover(Guid id)
+        public virtual void Remover(Guid id)
         {
             var entity = new TEntity { Id = id };
             DbSet.Remove(entity);

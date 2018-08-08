@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Tecdisa.OS.Application.ViewModel.ProgramadorViewModel>
+
+@{
+    ViewBag.Title = "Início";
+}
+
+<div class="d-flex justify-content-between align-items-end mb-2">
+    <h1 class="display-4">Programadores</h1>
+
+    <a href="@Url.Action("Create", "Programador")" role="button" class="btn btn-outline-dark"><i class="fa fa-address-card"></i> Novo Programador</a>
+</div>
+
+<table class="table table-striped text-center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Programador", new { id=item.Id })" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+            <a href="@Url.Action("Details", "Programador", new { id=item.Id })" class="btn btn-outline-info"><i class="fa fa-list"></i></a>
+            <a href="@Url.Action("Delete", "Programador", new { id=item.Id })" class="btn btn-outline-danger"><i class="fa fa-remove"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

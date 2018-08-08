@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha256-98vAGjEDGN79TjHkYWVD4s87rvWkdWLHPs5MC3FvFX4=" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            @Html.ActionLink("Tecdisa OS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Início", "Index", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Atendimentos", "Index", "OrdemDeServico", null, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cadastros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Clientes", "Index", "Cliente", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Programadores", "Index", "Programador", null, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Sistemas", "Index", "Sistemas", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Modulos", "Index", "Modulo", null, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Tecdisa</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/moment")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(() => {
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+
+            $('#listaDeClientes').change(function() {
+                var clienteId = $(this).children(":selected").val();
+
+                $('#clienteNome').val($(this).children(":selected").text());
+
+                $.get("@Url.Action("ObterUsuario", "OrdemDeServico")", { clienteId : clienteId }, function (data) {
+                    $('#nomeDoFaturista').attr("Value", data);
+                });
+            });
+
+            $('#dataDeFechamento').focusin(function () {
+                var $dataFechamento = $(this);
+                var $horaFechamento = $('#horaDeFechamento');
+                $(this).keypress(function (event) {
+                    if (event.keyCode == 68) {
+                        $dataFechamento.removeAttr("value");
+                        $horaFechamento.removeAttr("value");
+
+                        $dataFechamento.attr("value", moment().format("YYYY-MM-DD"));
+                        $horaFechamento.attr("value", moment().format("HH:mm"));
+                    }
+                })
+            });
+
+            $('#checkboxAjuste').change(function () {
+                var checkbox = $(this);
+                var label = $('#labelDeProgramadores');
+                var selectList = $('#listaDeProgramadores');
+                if (checkbox.is(":checked")) {
+                    label.show("fast");
+                    selectList.show("fast");
+                } else {
+                    label.hide(200);
+                    selectList.hide(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

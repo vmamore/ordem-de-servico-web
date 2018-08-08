@@ -1,4 +1,6 @@
-﻿namespace Tecdisa.OS.Domain.ValueObjects
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Tecdisa.OS.Domain.ValueObjects
 {
     public enum CARGO
     {
@@ -13,6 +15,8 @@
     public abstract class Usuario
     {
         public string Nome { get; set; }
+
+        [NotMapped]
         public CARGO Cargo { get; set; }
     }
 }

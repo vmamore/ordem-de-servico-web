@@ -1,0 +1,40 @@
+﻿@model Tecdisa.OS.Application.ViewModel.ModuloViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="d-flex justify-content-between align-items-end mb-2">
+    <h4 class="display-4"> Você tem certeza que deseja deletar?</h4>
+
+    <p class="label text-danger"><span class="fa fa-arrow-circle-o-right"></span> Módulo</p>
+</div>
+
+<hr />
+
+<div>
+    <div class="form-row">
+        <div class="form-group col-3">
+            <div class="d-inline-flex">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label mr-5 pr-5" })
+            </div>
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+
+        <div class="form-group col-2">
+            @Html.LabelFor(model => model.Sistema.Nome, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Sistema.Nome, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-outline-danger" />
+            <a href="@Url.Action("Index", "Modulo")" class="btn btn-outline-warning"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
+
+        </div>
+    }
+</div>

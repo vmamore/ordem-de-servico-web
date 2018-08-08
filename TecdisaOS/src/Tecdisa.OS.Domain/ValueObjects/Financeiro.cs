@@ -6,5 +6,7 @@
         {
             this.Cargo = CARGO.Financeiro;
         }
+
+        public string Email { get; set; }
     }
 }

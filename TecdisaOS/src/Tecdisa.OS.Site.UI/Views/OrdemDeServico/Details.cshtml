@@ -1,0 +1,102 @@
+﻿@model Tecdisa.OS.Application.ViewModel.OrdemDeServicoViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h4 class="display-4">Detalhes</h4>
+
+<hr />
+
+<div class="form-row justify-content-end">
+    <div class="form-group col-2 mt-3 pt-1">
+        @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", @readonly = "true", @disabled = "true" } })
+    </div>
+
+    <div class="form-group col-2 mt-3 pt-1">
+        @Html.LabelFor(model => model.HoraCadastro, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        @Html.EditorFor(model => model.HoraCadastro, new { htmlAttributes = new { @class = "form-control", @readonly = "true", @disabled = "true" } })
+    </div>
+
+    <span class="border-right mx-1"></span>
+
+    <div class="form-row">
+
+        <div class="form-group col mt-3 pt-1">
+
+            <div class="d-inline-block m-0">
+                @Html.LabelFor(model => model.DataDeFechamento, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                @Html.EditorFor(model => model.DataDeFechamento, new { htmlAttributes = new { @class = "form-control", @id = "dataDeFechamento", @disabled = "true" } })
+            </div>
+
+            <div class="d-inline-block m-0">
+                @Html.LabelFor(model => model.HoraDeFechamento, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                @Html.EditorFor(model => model.HoraDeFechamento, new { htmlAttributes = new { @class = "form-control", @id = "horaDeFechamento", @disabled = "true" } })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-5">
+        @Html.LabelFor(model => model.ClienteId, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        @Html.DropDownListFor(model => model.ClienteId, new SelectList(ViewBag.ListaDeClientes, "Value", "Text", ViewBag.ClienteId), new { @class = "form-control", @id = "listaDeClientes", @disabled = "true" })
+    </div>
+
+    <div class="col">
+        <div class="form-row justify-content-end">
+            <div class="form-group col-4">
+                @Html.LabelFor(model => model.NomeDoFaturista, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                @Html.EditorFor(model => model.NomeDoFaturista, new { htmlAttributes = new { @class = "form-control", @id = "nomeDoFaturista", @disabled = "true" } })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-2">
+        @Html.LabelFor(model => model.Sistema, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        @Html.EditorFor(model => model.Sistema, new { htmlAttributes = new { @class = "form-control", @id = "nomeDoFaturista", @disabled = "true" } })
+    </div>
+    <div class="form-group col-3">
+        @Html.LabelFor(model => model.Modulo, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        @Html.EditorFor(model => model.Modulo, new { htmlAttributes = new { @class = "form-control", @id = "nomeDoFaturista", @disabled = "true" } })
+    </div>
+</div>
+
+
+<div class="form-row">
+    <div class="form-group col text-center">
+        @Html.LabelFor(model => model.Problema, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        @Html.TextAreaFor(model => model.Problema, new { @class = "form-control", @cols = "10", @rows = "4", @disabled = "true" })
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col text-center">
+        @Html.LabelFor(model => model.Solucao, htmlAttributes: new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.Solucao, new { @class = "form-control", @cols = "10", @rows = "4", @disabled = "true" })
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col">
+        @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.Observacao, new { @class = "form-control", @cols = "10", @rows = "4", @readonly = "true" })
+    </div>
+
+    <div class="form-check col-3 align-self-center pl-4 m-0">
+        <div class="checkbox">
+            @Html.EditorFor(model => model.NecessitaDeAjuste, new { htmlAttributes = new { @class = "form-check-input", @disabled = "true" } })
+            @Html.LabelFor(model => model.NecessitaDeAjuste, htmlAttributes: new { @class = "form-check-label", @disabled = "true" })
+        </div>
+        @Html.LabelFor(model => model.Programador, htmlAttributes: new { @class = "control-label", @disabled = "true" })
+        @Html.EditorFor(model => model.Programador, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+    </div>
+</div>
+
+<p>
+    <a href="@Url.Action("Edit","OrdemDeServico", new { id = Model.Id})" class="btn btn-outline-success"><i class="fa fa-edit"></i> Editar</a>
+    <a href="@Url.Action("Index", "OrdemDeServico")" class="btn btn-outline-warning"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
+</p>
